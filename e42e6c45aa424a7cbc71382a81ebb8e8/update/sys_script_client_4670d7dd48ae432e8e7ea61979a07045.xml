@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_script_client">
+  <sys_script_client action="INSERT_OR_UPDATE">
+    <active>true</active>
+    <applies_extended>false</applies_extended>
+    <condition/>
+    <description/>
+    <field>destination</field>
+    <global>true</global>
+    <isolate_script>false</isolate_script>
+    <messages/>
+    <name>目的地疫情判断</name>
+    <order>100</order>
+    <script>const defaultOptions = {
+  timeout: 5000,
+  jsonpCallback: 'callback',
+  jsonpCallbackFunction: null,
+};
+console.log('脚本开始调用');
+var source = g_form.getValue('source')
+var destination = g_form.getValue('destination')
+if (source != '' &amp;&amp; destination != '') {
+  console.log('URL开始调用');
+  var promise = fetchJsonp('http://apis.juhe.cn/springTravel/query?key=fff3f780ef360aad9f96e8e2d59d4106&amp;from=' + source + '&amp;to=' + destination)
+  promise.then(res =&gt; {
+    res.json().then(data =&gt; {
+      var desc = data.result.to_info.high_in_desc != '' ? data.result.to_info.high_in_desc : data.result.to_info.low_in_desc
+      alert('出行提醒：\n抵达' + data.result.to_info.city_name + '省提醒：\n' + desc +
+        '\n 离开' + data.result.to_info.city_name + '省提醒：\n' + data.result.to_info.out_desc);
+    })
+  }, error =&gt; {
+    console.log('失败结果：' + error);
+  });
+}
+
+function generateCallbackFunction() {
+  return `jsonp_${Date.now()}_${Math.ceil(Math.random() * 100000)}`;
+}
+
+function clearFunction(functionName) {
+  // IE8 throws an exception when you try to delete a property on window
+  // http://stackoverflow.com/a/1824228/751089
+  try {
+    delete window[functionName];
+  } catch (e) {
+    window[functionName] = undefined;
+  }
+}
+
+function removeScript(scriptId) {
+  const script = document.getElementById(scriptId);
+  if (script) {
+    document.getElementsByTagName('head')[0].removeChild(script);
+  }
+}
+
+function fetchJsonp(_url, options = {}) {
+  // to avoid param reassign
+  let url = _url;
+  const timeout = options.timeout || defaultOptions.timeout;
+  const jsonpCallback = options.jsonpCallback || defaultOptions.jsonpCallback;
+
+  let timeoutId;
+
+  return new Promise((resolve, reject) =&gt; {
+    const callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
+    const scriptId = `${jsonpCallback}_${callbackFunction}`;
+
+    window[callbackFunction] = (response) =&gt; {
+      resolve({
+        ok: true,
+        // keep consistent with fetch API
+        json: () =&gt; Promise.resolve(response),
+      });
+
+      if (timeoutId) clearTimeout(timeoutId);
+
+      removeScript(scriptId);
+
+      clearFunction(callbackFunction);
+    };
+
+    // Check if the user set their own params, and if not add a ? to start a list of params
+    url += (url.indexOf('?') === -1) ? '?' : '&amp;';
+
+    const jsonpScript = document.createElement('script');
+    jsonpScript.setAttribute('src', `${url}${jsonpCallback}=${callbackFunction}`);
+    if (options.charset) {
+      jsonpScript.setAttribute('charset', options.charset);
+    }
+    if (options.nonce) {
+      jsonpScript.setAttribute('nonce', options.nonce);
+    }
+    if (options.referrerPolicy) {
+      jsonpScript.setAttribute('referrerPolicy', options.referrerPolicy);
+    }
+    jsonpScript.id = scriptId;
+    document.getElementsByTagName('head')[0].appendChild(jsonpScript);
+
+    timeoutId = setTimeout(() =&gt; {
+      reject(new Error(`JSONP request to ${_url} timed out`));
+
+      clearFunction(callbackFunction);
+      removeScript(scriptId);
+      window[callbackFunction] = () =&gt; {
+        clearFunction(callbackFunction);
+      };
+    }, timeout);
+
+    // Caught if got 404/500
+    jsonpScript.onerror = () =&gt; {
+      reject(new Error(`JSONP request to ${_url} failed`));
+
+      clearFunction(callbackFunction);
+      removeScript(scriptId);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  });
+}</script>
+    <sys_class_name>sys_script_client</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 14:21:05</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective>true</sys_effective>
+    <sys_id>4670d7dd48ae432e8e7ea61979a07045</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 14:21:05</sys_updated_on>
+    <table>x_yunji_oa_t_trip_plan</table>
+    <type>onChange</type>
+    <ui_type>0</ui_type>
+    <view/>
+  </sys_script_client>
+</record_update>

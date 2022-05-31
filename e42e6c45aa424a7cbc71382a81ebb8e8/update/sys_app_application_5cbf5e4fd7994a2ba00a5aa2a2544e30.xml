@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_app_application">
+  <sys_app_application action="INSERT_OR_UPDATE">
+    <active>true</active>
+    <category>5618a6a4b3394d9aa3b54682b5301ed5</category>
+    <description/>
+    <device_type>browser</device_type>
+    <hint/>
+    <name>差旅管理系统</name>
+    <order>100.00</order>
+    <roles>5d2b343cb0b64be2a544dd6ba4f522eb,cda833670ce44523b3f6b0b3a35fa336</roles>
+    <sys_class_name>sys_app_application</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 14:04:44</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>5cbf5e4fd7994a2ba00a5aa2a2544e30</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 14:04:57</sys_updated_on>
+    <title>差旅管理系统</title>
+    <view_name/>
+  </sys_app_application>
+</record_update>

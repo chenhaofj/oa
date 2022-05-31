@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_script">
+  <sys_script action="INSERT_OR_UPDATE">
+    <abort_action>false</abort_action>
+    <access>package_private</access>
+    <action_delete>false</action_delete>
+    <action_insert>false</action_insert>
+    <action_query>false</action_query>
+    <action_update>false</action_update>
+    <active>true</active>
+    <add_message>false</add_message>
+    <advanced>true</advanced>
+    <change_fields>false</change_fields>
+    <client_callable>false</client_callable>
+    <collection>x_yunji_oa_t_trip_plan</collection>
+    <condition/>
+    <description/>
+    <execute_function>false</execute_function>
+    <filter_condition/>
+    <is_rest>false</is_rest>
+    <message/>
+    <name>差旅结束后弹窗提示</name>
+    <order>100</order>
+    <priority>100</priority>
+    <rest_method/>
+    <rest_method_text/>
+    <rest_service/>
+    <rest_service_text/>
+    <rest_variables/>
+    <role_conditions/>
+    <script>(function executeRule(current, previous /*null when async*/) {
+    var userName = gs.getUserName();
+    var now = new Date();
+    // 找出所有已经结束的差旅计划
+    // gs.print(userName)
+    var planGR = new GlideRecord('x_yunji_oa_t_trip_plan');
+    planGR.addQuery('name', '=', userName);
+    planGR.addQuery('endTime', '&lt;', dateformat('yyyy-MM-dd HH:mm:ss', now));
+    planGR.query();
+    // gs.print(planGR.hasNext())
+    while (planGR.hasNext()) {
+        planGR.next();
+        var costGR = new GlideRecord('x_yunji_oa_t_trip_cost_approve');
+        costGR.addQuery('tripPlanName', '=', planGR.getValue('sys_id'));
+        costGR.query();
+        if (!costGR.hasNext()) {
+            gs.print('温馨提示：您有差旅费尚未发起报销流程，请及时发起并将纸质单据提交至财务处');
+        }
+    }
+    function dateformat(fmt, date) {
+        var ret;
+        const opt = {
+            "y+": date.getFullYear().toString(),        // 年
+            "M+": (date.getMonth() + 1).toString(),     // 月
+            "d+": date.getDate().toString(),            // 日
+            "H+": date.getHours().toString(),           // 时
+            "m+": date.getMinutes().toString(),         // 分
+            "s+": date.getSeconds().toString()          // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (var k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")));
+            }
+        }
+        return fmt;
+    }
+})(current, previous);</script>
+    <sys_class_name>sys_script</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 11:44:59</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>036168729e4f4eeca6fbb257bd62e8dd</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 11:46:02</sys_updated_on>
+    <template/>
+    <when>before_display</when>
+  </sys_script>
+</record_update>

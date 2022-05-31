@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="wf_workflow">
+  <wf_workflow action="INSERT_OR_UPDATE">
+    <access>public</access>
+    <description/>
+    <name>trip-差旅费用汇总-公司</name>
+    <preview/>
+    <sys_class_name>wf_workflow</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:49:22</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective/>
+    <sys_id>2967dcf3489c495caa43c65c01f6568f</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:49:22</sys_updated_on>
+    <table>x_yunji_oa_t_trip_company_budget</table>
+    <template>false</template>
+  </wf_workflow>
+  <wf_workflow_version action="INSERT_OR_UPDATE">
+    <act_def_id>fad325fb-e0a5-11ec-ac74-0242ac120004</act_def_id>
+    <active>true</active>
+    <activity_stages/>
+    <after_business_rules/>
+    <bpmn>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://activiti.org/bpmn" id="Definitions_1"&gt;
+  &lt;process id="_99d3108e-104b-4814-ad31-47a4888707fa" isExecutable="true"&gt;
+    &lt;startEvent id="_7db3b1a8d9584f439da57cbdfc309471" name="开始"&gt;
+      &lt;bounds key="_7c95f435-3d65-4f4c-b75b-051729a51b13" sys_id="a86839ae45ec40a6ac26c425be1c8367" name="开始" displayName="开始" category="Utilities" image="" parent="Utilities" activityCoreType="startEvent" activityType="Begin" toPortId="_1c273698-6246-4372-9ebf-83868864d3e9" actType="startEvent" bizType="startEvent" loc="-588.2075811258952 56.43402727762856" workflowInstanceId="" workflow_displayValue="" workflow_value="" stageName=""/&gt;
+      &lt;conditionList&gt;
+        &lt;condition id="b96e92ccfb4e4eaa83ecabe135925b66" name="总是" fromPortId="_03b663b0-84a5-4702-90ed-ecb64a3931bd"/&gt;
+      &lt;/conditionList&gt;
+    &lt;/startEvent&gt;
+    &lt;endEvent id="_38053f1b30ae49ac87c0508cfba22824" name="结束"&gt;
+      &lt;bounds key="_193c0a1e-5b3d-4733-85a5-812c16c7160f" sys_id="c0a6be81346e4fac9895b8b5b8472b0a" name="结束" displayName="结束" category="Utilities" image="" parent="Utilities" activityCoreType="endEvent" activityType="End" toPortId="_cec80628-2a1c-49d9-b954-b388ab779dab" actType="endEvent" bizType="endEvent" loc="-186.41505251567128 604.1813575263315" workflowInstanceId="" workflow_displayValue="" workflow_value="" stageName=""/&gt;
+      &lt;conditionList/&gt;
+    &lt;/endEvent&gt;
+    &lt;receiveTask id="_fb60ac7b5cf046ee9d461093a9a5acb7" name="运行脚本"&gt;
+      &lt;bounds key="_e62f36b0-4a46-4a1e-985d-b7d65a643d30" sys_id="4b9c9712c51e4634a9c6670e6779815f" name="运行脚本" displayName="汇总公司预算" category="Utilities" image="http://cloudboot.idcos.com:39999/devcdn/5b5a79aa0ae4bc871a52284e015277a5.png" parent="Utilities" activityCoreType="receiveTask" activityType="Run Script" toPortId="_5585301c-48e5-4242-8945-d1e22426c852" actType="Run Script" bizType="Run Script" loc="-347 245" stageName=""/&gt;
+      &lt;conditionList&gt;
+        &lt;condition id="810d81580760411e9b137124f379baa3" name="总是" fromPortId="_810d81580760411e9b137124f379baa3"/&gt;
+      &lt;/conditionList&gt;
+    &lt;/receiveTask&gt;
+    &lt;receiveTask id="_d24f018e4858452ca1a0a62ba601afdb" name="返回值"&gt;
+      &lt;bounds key="_545a8f22-d7fe-47b8-bbd2-7ab39caaaadd" sys_id="c123286c336446c181d7dc57c9645274" name="返回值" displayName="Return Value" category="Utilities" image="http://cloudboot.idcos.com:39999/devcdn/7d0e3660e41ace2132c8907586419a80.png" parent="Utilities" activityCoreType="receiveTask" activityType="Return Value" toPortId="_61a9cd70-c19a-463e-8554-cb17b20b5643" actType="Return Value" bizType="Return Value" loc="-186.41505251567128 400" stageName=""/&gt;
+      &lt;conditionList&gt;
+        &lt;condition id="ef4a1fe768314842b269c982af765a77" name="总是" fromPortId="_ef4a1fe768314842b269c982af765a77"/&gt;
+      &lt;/conditionList&gt;
+    &lt;/receiveTask&gt;
+    &lt;sequenceFlow id="_b96e92ccfb4e4eaa83ecabe135925b66-_fb60ac7b5cf046ee9d461093a9a5acb7" sourceRef="_7db3b1a8d9584f439da57cbdfc309471" targetRef="_fb60ac7b5cf046ee9d461093a9a5acb7"&gt;
+      &lt;conditionExpression/&gt;
+      &lt;waypoint from="_7c95f435-3d65-4f4c-b75b-051729a51b13" to="_e62f36b0-4a46-4a1e-985d-b7d65a643d30" fromPort="_03b663b0-84a5-4702-90ed-ecb64a3931bd" toPort="_5585301c-48e5-4242-8945-d1e22426c852" id="_b96e92ccfb4e4eaa83ecabe135925b66-_38053f1b30ae49ac87c0508cfba22824" state="" points="List()#12727"/&gt;
+    &lt;/sequenceFlow&gt;
+    &lt;sequenceFlow id="_810d81580760411e9b137124f379baa3-_d24f018e4858452ca1a0a62ba601afdb" sourceRef="_fb60ac7b5cf046ee9d461093a9a5acb7" targetRef="_d24f018e4858452ca1a0a62ba601afdb"&gt;
+      &lt;conditionExpression&gt;${conditionResult.contains('810d81580760411e9b137124f379baa3')}&lt;/conditionExpression&gt;
+      &lt;waypoint from="_e62f36b0-4a46-4a1e-985d-b7d65a643d30" to="_545a8f22-d7fe-47b8-bbd2-7ab39caaaadd" fromPort="_810d81580760411e9b137124f379baa3" toPort="_61a9cd70-c19a-463e-8554-cb17b20b5643" points="List()#15556"/&gt;
+    &lt;/sequenceFlow&gt;
+    &lt;sequenceFlow id="_ef4a1fe768314842b269c982af765a77-_38053f1b30ae49ac87c0508cfba22824" sourceRef="_d24f018e4858452ca1a0a62ba601afdb" targetRef="_38053f1b30ae49ac87c0508cfba22824"&gt;
+      &lt;conditionExpression&gt;${conditionResult.contains('ef4a1fe768314842b269c982af765a77')}&lt;/conditionExpression&gt;
+      &lt;waypoint from="_545a8f22-d7fe-47b8-bbd2-7ab39caaaadd" to="_193c0a1e-5b3d-4733-85a5-812c16c7160f" fromPort="_ef4a1fe768314842b269c982af765a77" toPort="_cec80628-2a1c-49d9-b954-b388ab779dab" points="List()#15555"/&gt;
+    &lt;/sequenceFlow&gt;
+  &lt;/process&gt;
+&lt;/definitions&gt;</bpmn>
+    <checked_out/>
+    <checked_out_by/>
+    <column_renderer/>
+    <condition/>
+    <condition_type>run_match</condition_type>
+    <description/>
+    <expected_sequences/>
+    <expected_time/>
+    <expected_time_type/>
+    <full_sequences/>
+    <journal/>
+    <max_activity_count>100</max_activity_count>
+    <name>trip-差旅费用汇总-公司</name>
+    <not_cacheable>false</not_cacheable>
+    <on_cancel>// This script executes if the workflow is cancelled.// The global variable context_sys_id contains the sys_id of the cancelled workflow context.</on_cancel>
+    <order>100</order>
+    <pin_type>set_by_activity</pin_type>
+    <published>true</published>
+    <relative_duration/>
+    <requires_ert>true</requires_ert>
+    <run_multiple/>
+    <schedule/>
+    <stage_field/>
+    <stage_order>computed</stage_order>
+    <start/>
+    <sys_class_name>wf_workflow_version</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:49:22</sys_created_on>
+    <sys_effective/>
+    <sys_id>144b424abf3c4049af6a569161644e71</sys_id>
+    <sys_mod_count>6</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:53:22</sys_updated_on>
+    <table>x_yunji_oa_t_trip_company_budget</table>
+    <timezone/>
+    <validated/>
+    <workflow>2967dcf3489c495caa43c65c01f6568f</workflow>
+  </wf_workflow_version>
+  <wf_activity action="INSERT_OR_UPDATE">
+    <activity_definition>a86839ae45ec40a6ac26c425be1c8367</activity_definition>
+    <activity_definition_updated>false</activity_definition_updated>
+    <databus_lookup_id/>
+    <height/>
+    <input/>
+    <is_parent>false</is_parent>
+    <name>开始</name>
+    <new_activity_definition/>
+    <notes/>
+    <out_of_date>false</out_of_date>
+    <parent/>
+    <pinned>false</pinned>
+    <pinned_version/>
+    <stage/>
+    <sys_class_name>wf_activity</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:49:23</sys_created_on>
+    <sys_effective/>
+    <sys_id>7db3b1a8d9584f439da57cbdfc309471</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:49:23</sys_updated_on>
+    <timeout/>
+    <vars/>
+    <width>80</width>
+    <workflow_version>144b424abf3c4049af6a569161644e71</workflow_version>
+    <x>20</x>
+    <y>20</y>
+  </wf_activity>
+  <wf_activity action="INSERT_OR_UPDATE">
+    <activity_definition>c0a6be81346e4fac9895b8b5b8472b0a</activity_definition>
+    <activity_definition_updated>false</activity_definition_updated>
+    <databus_lookup_id/>
+    <height/>
+    <input/>
+    <is_parent>false</is_parent>
+    <name>结束</name>
+    <new_activity_definition/>
+    <notes/>
+    <out_of_date>false</out_of_date>
+    <parent/>
+    <pinned>false</pinned>
+    <pinned_version/>
+    <stage/>
+    <sys_class_name>wf_activity</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:49:23</sys_created_on>
+    <sys_effective/>
+    <sys_id>38053f1b30ae49ac87c0508cfba22824</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:49:23</sys_updated_on>
+    <timeout/>
+    <vars/>
+    <width>80</width>
+    <workflow_version>144b424abf3c4049af6a569161644e71</workflow_version>
+    <x>400</x>
+    <y>150</y>
+  </wf_activity>
+  <wf_activity action="INSERT_OR_UPDATE">
+    <activity_definition>4b9c9712c51e4634a9c6670e6779815f</activity_definition>
+    <activity_definition_updated>false</activity_definition_updated>
+    <databus_lookup_id/>
+    <height/>
+    <input/>
+    <is_parent>false</is_parent>
+    <name>汇总公司预算</name>
+    <new_activity_definition/>
+    <notes/>
+    <out_of_date>false</out_of_date>
+    <parent/>
+    <pinned>false</pinned>
+    <pinned_version/>
+    <stage/>
+    <sys_class_name>wf_activity</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:51:20</sys_created_on>
+    <sys_effective/>
+    <sys_id>fb60ac7b5cf046ee9d461093a9a5acb7</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:51:20</sys_updated_on>
+    <timeout/>
+    <vars/>
+    <width/>
+    <workflow_version>144b424abf3c4049af6a569161644e71</workflow_version>
+    <x/>
+    <y/>
+  </wf_activity>
+  <wf_activity action="INSERT_OR_UPDATE">
+    <activity_definition>c123286c336446c181d7dc57c9645274</activity_definition>
+    <activity_definition_updated>false</activity_definition_updated>
+    <databus_lookup_id/>
+    <height/>
+    <input/>
+    <is_parent>false</is_parent>
+    <name>Return Value</name>
+    <new_activity_definition/>
+    <notes/>
+    <out_of_date>false</out_of_date>
+    <parent/>
+    <pinned>false</pinned>
+    <pinned_version/>
+    <stage/>
+    <sys_class_name>wf_activity</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:52:26</sys_created_on>
+    <sys_effective/>
+    <sys_id>d24f018e4858452ca1a0a62ba601afdb</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:52:26</sys_updated_on>
+    <timeout/>
+    <vars/>
+    <width/>
+    <workflow_version>144b424abf3c4049af6a569161644e71</workflow_version>
+    <x/>
+    <y/>
+  </wf_activity>
+  <wf_condition action="INSERT_OR_UPDATE">
+    <activity>7db3b1a8d9584f439da57cbdfc309471</activity>
+    <condition>true</condition>
+    <condition_default/>
+    <condition_type>standard</condition_type>
+    <else_flag>false</else_flag>
+    <error>false</error>
+    <event>false</event>
+    <event_name/>
+    <is_positive>false</is_positive>
+    <name>开始</name>
+    <order>1</order>
+    <short_description/>
+    <skip_during_generate>false</skip_during_generate>
+    <sys_class_name>wf_condition</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:49:23</sys_created_on>
+    <sys_effective/>
+    <sys_id>b96e92ccfb4e4eaa83ecabe135925b66</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:49:23</sys_updated_on>
+  </wf_condition>
+  <wf_condition action="INSERT_OR_UPDATE">
+    <activity>fb60ac7b5cf046ee9d461093a9a5acb7</activity>
+    <condition>true</condition>
+    <condition_default>5f731b6470f344b585728cf9b757dd7c</condition_default>
+    <condition_type>standard</condition_type>
+    <else_flag>false</else_flag>
+    <error>false</error>
+    <event>false</event>
+    <event_name/>
+    <is_positive>false</is_positive>
+    <name>总是</name>
+    <order>1</order>
+    <short_description/>
+    <skip_during_generate>false</skip_during_generate>
+    <sys_class_name>wf_condition</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:51:20</sys_created_on>
+    <sys_effective/>
+    <sys_id>810d81580760411e9b137124f379baa3</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:51:20</sys_updated_on>
+  </wf_condition>
+  <wf_condition action="INSERT_OR_UPDATE">
+    <activity>d24f018e4858452ca1a0a62ba601afdb</activity>
+    <condition>true</condition>
+    <condition_default>bf19078a1db44d02a6f42760767f312e</condition_default>
+    <condition_type>standard</condition_type>
+    <else_flag>false</else_flag>
+    <error>false</error>
+    <event>false</event>
+    <event_name/>
+    <is_positive>false</is_positive>
+    <name>总是</name>
+    <order>1</order>
+    <short_description/>
+    <skip_during_generate>false</skip_during_generate>
+    <sys_class_name>wf_condition</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:52:26</sys_created_on>
+    <sys_effective/>
+    <sys_id>ef4a1fe768314842b269c982af765a77</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:52:26</sys_updated_on>
+  </wf_condition>
+  <sys_variable_value action="INSERT_OR_UPDATE">
+    <document>wf_activity</document>
+    <document_key>fb60ac7b5cf046ee9d461093a9a5acb7</document_key>
+    <order/>
+    <sys_class_name>sys_variable_value</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:51:20</sys_created_on>
+    <sys_effective/>
+    <sys_id>276ad929a59544e5b1fa60c8d9ff892f</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:51:20</sys_updated_on>
+    <value>// 初始化字段
+var totalAmount = 0;
+var tripNum = 0;
+var totalDuration = 0;
+var companyName = '';
+var amount = 0;
+var tripPlanName = '';
+var sysId = '';
+
+var gr = new GlideRecord("x_yunji_oa_t_trip_cost_approve");
+gr.orderByDesc('sys_created_on');
+gr.setLimit(1);
+gr.query();
+if (gr.next() != null){
+     amount = gr.getValue("amount"); 
+     sysId = gr.getValue("tripPlanName");
+     // gs.print('sysId  ' + sysId);
+     // gs.print('amount ' + amount);
+}
+
+var gr1 = new GlideRecord("x_yunji_oa_t_trip_plan");
+gr1.addQuery("sysId", sysId);
+gr1.query();
+
+if (gr1.next() != null){
+    duration = gr1.getValue("duration");
+    companyName = gr1.getValue("company");
+    // gs.print('duration  ' + duration);
+    // gs.print('company  ' + companyName);
+}
+
+var gr2 = new GlideRecord("x_yunji_oa_t_trip_company_budget");
+gr2.addQuery("company", companyName);
+gr2.query();
+
+if (gr2.next() != null){
+    // gs.print(gr2.getValue('totalAmount'));
+    // 计算累计开销金额
+    totalAmount = gr2.getValue("totalAmount");
+    gr2.setValue("totalAmount", totalAmount + amount);
+    // 计算累计出差次数
+    tripNum = gr2.getValue("tripNum");
+    gr2.setValue("tripNum", tripNum + 1);
+    // 计算累计出差时长
+    totalDuration = gr2.getValue("totalDuration");
+    gr2.setValue("totalDuration", totalDuration + duration);
+    gr2.update();
+}
+  
+
+</value>
+    <variable>5ddce502ff2e40188ec351b7c41cff35</variable>
+  </sys_variable_value>
+  <sys_variable_value action="INSERT_OR_UPDATE">
+    <document>wf_activity</document>
+    <document_key>d24f018e4858452ca1a0a62ba601afdb</document_key>
+    <order/>
+    <sys_class_name>sys_variable_value</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:52:26</sys_created_on>
+    <sys_effective/>
+    <sys_id>265c7237f8a84c5f911df090ce95bc5f</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:52:26</sys_updated_on>
+    <value>success</value>
+    <variable>9b31de1450ff477eb178d1cb2d3593c1</variable>
+  </sys_variable_value>
+  <wf_workflow_version action="UPDATE_MULTIPLE" query="workflow=2967dcf3489c495caa43c65c01f6568f^sys_id!=144b424abf3c4049af6a569161644e71">
+    <published>false</published>
+  </wf_workflow_version>
+</record_update>

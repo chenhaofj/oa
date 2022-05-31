@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_ui_policy">
+  <sys_ui_policy action="INSERT_OR_UPDATE">
+    <active>true</active>
+    <conditions>costTypeISNOTEMPTY^costISNOTEMPTY^quoteISNOTEMPTY^EQ</conditions>
+    <description/>
+    <global>true</global>
+    <inherit>false</inherit>
+    <isolate_script>false</isolate_script>
+    <model_id/>
+    <model_table/>
+    <on_load>true</on_load>
+    <order>100</order>
+    <reverse_if_false>true</reverse_if_false>
+    <run_scripts>false</run_scripts>
+    <script_false>function onCondition() {}</script_false>
+    <script_true>function onCondition() {
+  
+    var cost = g_form.getValue('cost');
+    var costType = g_form.getValue('costType');
+    var approveId = g_form.getValue('quote');
+	  var csu = new GlideAjax("CostStandardUtils"); //构造器参数为脚本库名称
+    csu.addParam("sysparm_name", "checkCost"); //调用的方法
+    csu.addParam("approveId", approveId);//其他参数
+    csu.addParam("costType", costType);//其他参数
+//    csu.addParam("level", 'Y5');//其他参数
+    csu.addParam("cost", cost);//其他参数
+    var done = function(res) {
+//    	const { cost } = res.data.result;
+      if(cost&gt;res.data.result){
+       alert("您的报销的金额超过上限，为您调整为上限金额，超出部分无法报销");
+      }
+			g_form.setValue('cost',res.data.result);
+    }
+    csu.getJson(done.bind(this));
+}</script_true>
+    <set_values/>
+    <short_description>费用校验</short_description>
+    <sys_class_name>sys_ui_policy</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 15:40:21</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective>true</sys_effective>
+    <sys_id>9741af86b0f6435898775090013f149d</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 15:40:21</sys_updated_on>
+    <table>x_yunji_oa_t_cost</table>
+    <ui_type>0</ui_type>
+    <view/>
+  </sys_ui_policy>
+</record_update>

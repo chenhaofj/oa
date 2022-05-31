@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_script_client">
+  <sys_script_client action="INSERT_OR_UPDATE">
+    <active>true</active>
+    <applies_extended>false</applies_extended>
+    <condition/>
+    <description/>
+    <field>phone</field>
+    <global>true</global>
+    <isolate_script>false</isolate_script>
+    <messages/>
+    <name>差旅计划手机号判定</name>
+    <order>100</order>
+    <script>function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+var tel = g_form.getValue('phone')
+if (tel != '') {
+    var myreg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+    console.log(myreg.test(tel))
+    if (!myreg.test(tel)) {
+        console.log('脚本开始调用' + tel);
+        const msg = new GwtMessage();
+        msg.addErrorMessage('手机号码格式不正确');
+    }
+}
+}</script>
+    <sys_class_name>sys_script_client</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 13:32:30</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective>true</sys_effective>
+    <sys_id>46a41633ef0745448988267390b3caf5</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_overrides/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 13:32:30</sys_updated_on>
+    <table>x_yunji_oa_t_trip_plan</table>
+    <type>onChange</type>
+    <ui_type>0</ui_type>
+    <view/>
+  </sys_script_client>
+</record_update>
