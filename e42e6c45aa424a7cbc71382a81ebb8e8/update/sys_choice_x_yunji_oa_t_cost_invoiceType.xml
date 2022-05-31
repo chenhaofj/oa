@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_choice">
+  <sys_choice action="INSERT_OR_UPDATE">
+    <dependent_value/>
+    <element>invoiceType</element>
+    <hint/>
+    <inactive>false</inactive>
+    <label>普通发票</label>
+    <language>en</language>
+    <name>x_yunji_oa_t_cost</name>
+    <sequence/>
+    <synonyms/>
+    <sys_class_name>sys_choice</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-05-31 11:03:58</sys_created_on>
+    <sys_domain>global</sys_domain>
+    <sys_domain_path>/</sys_domain_path>
+    <sys_effective>true</sys_effective>
+    <sys_id>7e076174c12c48b18283e6af3836e04c</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-05-31 11:03:58</sys_updated_on>
+    <value>普通发票</value>
+  </sys_choice>
+</record_update>
