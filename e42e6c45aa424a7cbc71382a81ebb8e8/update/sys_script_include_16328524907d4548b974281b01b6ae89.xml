@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<record_update table="sys_script_include">
+  <sys_script_include action="INSERT_OR_UPDATE">
+    <access/>
+    <active>true</active>
+    <api_name>用户utils1</api_name>
+    <caller_access/>
+    <client_callable>true</client_callable>
+    <description/>
+    <name>UserUtils1</name>
+    <script>var UserUtils1 = Class.create();
+UserUtils1.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+  getUserInfo: function() { // build new response xml element for result
+    var userId = this.getParameter('userId');
+    
+    var gr = new GlideRecord('sys_user');
+    gr.addQuery('sys_id',userId);
+    gr.query();
+   
+    if(gr.hasNext()){    
+    	gr.next();
+      this.addAttribute("username", gr.getValue('user_name'));
+      this.addAttribute("company", gr.getValue('company'));
+      this.addAttribute("department", gr.getValue('department'));
+      this.addAttribute("phone", gr.getValue('mobile_phone'));
+    }
+   },
+  getUserInfoByPlanId: function(){
+    var planId = this.getParameter('planId');
+    var gr = new GlideRecord('x_yunji_jet_14_t_trip_plan');
+    gr.addQuery('sys_id',planId);
+    gr.query();
+    var userId=null;
+     if(gr.hasNext()){    
+    	gr.next();
+      userId = gr.getValue('name');
+        
+       var gr1 = new GlideRecord('sys_user');
+    	gr1.addQuery('sys_id',userId);
+    	gr1.query();
+   
+    if(gr1.hasNext()){    
+    	gr1.next();
+      this.addAttribute("company", gr1.getValue('company'));
+      this.addAttribute("department", gr1.getValue('department'));
+
+    }
+     }
+  }
+ });</script>
+    <sys_class_name>sys_script_include</sys_class_name>
+    <sys_created_by>admin</sys_created_by>
+    <sys_created_on>2022-06-01 11:28:20</sys_created_on>
+    <sys_effective>true</sys_effective>
+    <sys_id>16328524907d4548b974281b01b6ae89</sys_id>
+    <sys_mod_count>1</sys_mod_count>
+    <sys_name/>
+    <sys_package/>
+    <sys_policy/>
+    <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
+    <sys_update_name/>
+    <sys_updated_by>admin</sys_updated_by>
+    <sys_updated_on>2022-06-01 11:28:20</sys_updated_on>
+  </sys_script_include>
+</record_update>
