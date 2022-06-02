@@ -6,7 +6,7 @@
     <client>true</client>
     <client_script_v2/>
     <comments/>
-    <condition>current.getTableName() == 'x_yunji_jet_oa_t_trip_standard' || current.getTableName() == 'x_yunji_jet_oa_t_trip_petty_cash'|| current.getTableName() == 'x_yunji_jet_oa_t_trip_personal_budget'</condition>
+    <condition>current.getTableName() == 'x_yunji_oa_t_trip_standard' || current.getTableName() == 'x_yunji_oa_t_trip_petty_cash'|| current.getTableName() == 'x_yunji_oa_t_trip_personal_budget'</condition>
     <form_action>false</form_action>
     <form_button>false</form_button>
     <form_button_v2>false</form_button_v2>
@@ -43,10 +43,10 @@ refresh();
     <show_update>true</show_update>
     <sys_class_name>sys_ui_action</sys_class_name>
     <sys_created_by>admin</sys_created_by>
-    <sys_created_on>2022-05-31 11:51:11</sys_created_on>
+    <sys_created_on>2022-06-01 10:44:57</sys_created_on>
     <sys_domain>global</sys_domain>
     <sys_domain_path>/</sys_domain_path>
-    <sys_effective>true</sys_effective>
+    <sys_effective/>
     <sys_id>14060b3729744ea98dc4d4514307815e</sys_id>
     <sys_mod_count>1</sys_mod_count>
     <sys_name/>
@@ -56,7 +56,7 @@ refresh();
     <sys_scope>e42e6c45aa424a7cbc71382a81ebb8e8</sys_scope>
     <sys_update_name/>
     <sys_updated_by>admin</sys_updated_by>
-    <sys_updated_on>2022-05-31 11:51:11</sys_updated_on>
+    <sys_updated_on>2022-06-01 19:27:09</sys_updated_on>
     <table>global</table>
   </sys_ui_action>
 </record_update>
